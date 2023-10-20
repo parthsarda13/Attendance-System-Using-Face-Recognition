@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Attendance Analytics{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Attendance Analytics</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Roll Number</th>
+                <th>Total Classes</th>
+                <th>Classes Attended</th>
+                <th>Attendance Percentage</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in cumulative_records %}
+                <tr>
+                    <td>{{ record.student_name }}</td>
+                    <td>{{ record.roll_number }}</td>
+                    <td>{{ record.total_classes }}</td>
+                    <td>{{ record.classes_attended }}</td>
+                    <td>{{ (record.classes_attended / record.total_classes * 100)|round(2) }}%</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Face Recognition Attendance System - Manual Attendance{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card" >
+                <div class="card-header ">
+                    <h1 class="text-center">Manual Attendance Marking</h1>
+                </div>
+                <div class="card-body">
+                    {% if mess %}
+                    <p class="text-center text-danger">{{ mess }}</p>
+                    {% endif %}
+                    <form action="/mark_manual_attendance" method="post">
+                        <input type="hidden" name="class_id" value="{{ selected_class_id }}">
+                        <table class="table table-bordered mt-4">
+                            <thead>
+                                <tr>
+                                    <th>Roll No</th>
+                                    <th>Name</th>
+                                    <th>Mark Attendance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for student in students %}
+                                <tr>
+                                    <td>{{ student.roll_number }}</td>
+                                    <td>{{ student.name }}</td>
+                                    <td><input type="checkbox" name="attendance[]" value="{{ student.roll_number }}"></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">Mark Attendance</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

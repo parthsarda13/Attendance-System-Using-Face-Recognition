@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Manual Attendance Selection{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Manual Attendance Selection</h2>
+                </div>
+                <div class="card-body">
+                    <p class="text-center">Select the year for which you want to mark attendance:</p>
+
+                    <form method="POST" action="/manual_attendance">
+                        <div class="form-group">
+                            <label for="class_id">Select Class:</label>
+                            <select class="form-control" name="class_id" id="class_id">
+                                {% for class_id in class_ids %}
+                                    <option value="{{ class_id }}">{{ class_id }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

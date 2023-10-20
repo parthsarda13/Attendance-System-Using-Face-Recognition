@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Face Recognition Attendance System - Page 2{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-body text-center">
+                    <h4 class="card-title"><i class="fas fa-pencil-alt"></i> Manual Attendance</h4>
+                    <a href="/manual_attendance" class="btn btn-primary btn-lg btn-block">Mark Attendance</a>
+                    <p class="card-text text-muted mt-3">Manually mark attendance by selecting students.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-body text-center">
+                    <h4 class="card-title"><i class="fas fa-camera"></i> Face Recognition Attendance</h4>
+                    <a href="/home" class="btn btn-primary btn-lg btn-block">Mark Attendance</a>
+                    <p class="card-text text-muted mt-3">Automatically mark attendance using face recognition.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add the button for attendance analytics here -->
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-body text-center">
+                    <h4 class="card-title"><i class="fas fa-chart-bar"></i> Attendance Analytics</h4>
+                    <a href="/analytics" class="btn btn-primary btn-lg btn-block">View Analytics</a>
+                    <p class="card-text text-muted mt-3">View attendance analytics for students.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of attendance analytics button -->
+</div>
+<div class="text-center mt-5">
+    <img src="{{ url_for('static', filename='attendance.webp') }}" width="20%" height="auto" style="border-radius: 100%;" alt="Attendance GIF">
+</div>
+{% endblock %}

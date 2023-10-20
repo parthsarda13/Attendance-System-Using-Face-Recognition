@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Face Recognition Attendance System - Page 2{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 col-md-12 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Today's Attendance</h2>
+                    <form action="/process_image" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <input type="file" class="form-control-file" name="image" accept=".jpg, .jpeg, .png">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Mark Attendance</button>
+                    </form>
+                    <table class="table table-striped mt-4">
+                        <thead>
+                            <tr>
+                                <th>S No</th>
+                                <th>Name</th>
+                                <th>Roll No</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if l %}
+                            {% for i in range(l) %}
+                            <tr>
+                                <td>{{ i+1 }}</td>
+                                <td>{{ names[i] }}</td>
+                                <td>{{ rolls[i] }}</td>
+                                <td>{{ times[i] }}</td>
+                            </tr>
+                            {% endfor %}
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Add Student Detail</h2>
+                    <form action='/add' method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="newusername" class="form-label">Enter Student Name*</label>
+                            <input type="text" class="form-control" id="newusername" name='newusername' required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newuserid" class="form-label">Enter Student Roll</label>
+                            <input type="number" class="form-control" id="newuserid" name='newuserid' required>
+                        </div>
+                        <button type='submit' class='btn btn-primary btn-block'>Add Student Detail</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
