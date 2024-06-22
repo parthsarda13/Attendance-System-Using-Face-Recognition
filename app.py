@@ -15,7 +15,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 # app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:/Users/PARTH SARDA/Downloads/sqlite-tools-win32-x86-3430100/MyDatabases/testdb.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'DATABASE_URL'
 db = SQLAlchemy(app)
 
 
